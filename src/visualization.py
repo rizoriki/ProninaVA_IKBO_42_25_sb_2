@@ -36,9 +36,9 @@ def _render_d2_to_png(d2_file, png_file):
 def print_ascii_tree(graph, package, max_depth):
     """Print dependency tree in ASCII format."""
     visited = set()
-    _printTN(graph, package, "", True, 0, max_depth, visited)
+    _print_tn(graph, package, "", True, 0, max_depth, visited)
 
-def _printTN(graph, pkg, prefix, is_last, depth, max_depth, visited):
+def _print_tn(graph, pkg, prefix, is_last, depth, max_depth, visited):
     """Print single node in ASCII tree."""
     if depth > max_depth or pkg in visited:
         return
@@ -54,4 +54,4 @@ def _printTN(graph, pkg, prefix, is_last, depth, max_depth, visited):
     for i, dep in enumerate(deps):
         is_last_dep = (i == len(deps) - 1)
         new_prefix = prefix + ("    " if is_last else "│   ")
-        _printTN(graph, dep, new_prefix, is_last_dep, depth + 1, max_depth, visited)
+        _print_tn(graph, dep, new_prefix, is_last_dep, depth + 1, max_depth, visited)
