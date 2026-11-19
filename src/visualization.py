@@ -38,7 +38,7 @@ def print_ascii_tree(graph, package, max_depth):
     visited = set()
     _print_tn(graph, package, "", True, 0, max_depth, visited)
 
-def _print_tn(graph, pkg, prefix, is_last, depth, max_depth, visited):
+def _print_tn(gh, pkg, pref, is_last, depth, max_depth, visited):
     """Print single node in ASCII tree."""
     if depth > max_depth or pkg in visited:
         return
@@ -52,6 +52,6 @@ def _print_tn(graph, pkg, prefix, is_last, depth, max_depth, visited):
         
     deps = graph.get_dependencies(pkg)
     for i, dep in enumerate(deps):
-        is_last_dep = (i == len(deps) - 1)
-        new_prefix = prefix + ("    " if is_last else "│   ")
-        _print_tn(graph, dep, new_prefix, is_last_dep, depth + 1, max_depth, visited)
+        is_lt_dep = (i == len(deps) - 1)
+        new_pr = prefix + ("    " if is_last else "│   ")
+        _print_tn(graph, dep, new_pr, is_lt_dep, depth + 1, max_depth, visited)
