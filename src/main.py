@@ -9,7 +9,7 @@ from src.algorithms import (
 )
 from src.visualization import generate_d2, print_ascii_tree
 
-def build_production_graph(package, max_depth, substring):
+def build_product_graph(package, max_depth, substring):
     """Build graph from NuGet repository."""
     graph = DependencyGraph()
     visited = set()
@@ -53,7 +53,7 @@ def main():
         data = load_test_repo(args.repo)
         graph = build_graph_from_test(data)
     else:
-        graph = build_production_graph(args.package, args.max_depth, args.filter)
+        graph = build_product_graph(args.package, args.max_depth, args.filter)
 
     cycles = detect_cycles(graph, args.package)
     if cycles:
